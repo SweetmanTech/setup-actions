@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Input from '../Input';
 import { useRouter } from 'next/navigation';
+import * as zora from '@zoralabs/protocol-sdk';
 
 const SearchInput = () => {
   const [value, setValue] = useState('');
