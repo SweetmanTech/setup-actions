@@ -10,8 +10,8 @@ const GenerateButton = ({
 }: {
   tokenId?: bigint;
   minter: `0x${string}`;
-  uri: string;
-  maxSupply: bigint;
+  uri?: string;
+  maxSupply?: bigint;
 }) => {
   const handleClick = () => {
     console.log('SWEETS CLICKED', contracts1155);
