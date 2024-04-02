@@ -1,18 +1,24 @@
-import Button from '../Button';
+import { useProvider } from '@/providers/Provider';
 import GenerateButton from '../GenerateButton';
 import MadeBySweets from '../MadeBySweets';
-import SearchInput from '../SearchInput';
+import Output from '../Output';
 import LandingPageHeader from './LandingPageHeader';
+import SaleStrategyInput from './SaleStrategyInput';
+import FundsRecipientInput from './FundsRecipientInput';
 
-const BASE_SEPOLIA_FIXED_PRICE_SALE_STRATEGY = '0xd34872BE0cdb6b09d45FCa067B07f04a1A9aE1aE';
+const LandingPageContent = () => {
+  const { setupActions } = useProvider();
 
-const LandingPageContent = () => (
-  <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center sm:gap-8 md:px-6">
-    <LandingPageHeader />
-    <SearchInput />
-    <GenerateButton tokenId={1n} minter={BASE_SEPOLIA_FIXED_PRICE_SALE_STRATEGY} />
-    <MadeBySweets />
-  </div>
-);
+  return (
+    <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center sm:gap-8 md:px-6">
+      <LandingPageHeader />
+      <FundsRecipientInput />
+      <SaleStrategyInput />
+      {setupActions.length > 0 && <Output />}
+      <GenerateButton />
+      <MadeBySweets />
+    </div>
+  );
+};
 
 export default LandingPageContent;

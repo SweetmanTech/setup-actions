@@ -1,13 +1,15 @@
-# viem transfers
+# setup actions
 
-simple viem implementation of ERC721 Transfer event listener
+simple implementation of setup actions for zora's create Tool using
+
+- `@zoralabs/protocol-sdk`
+- `viem`
+
 <img width="1440" alt="Screenshot 2024-03-16 at 8 03 33 PM" src="https://github.com/SweetmanTech/viem-transfers/assets/23249402/7316614b-0951-4590-a35e-ff901518e8fd">
 
+## Key Components
 
-## Snapshot details
-
-- indexed event: `event Transfer(address indexed, address indexed, uint256)',
-`
+- `@/components/GenerateButton`: UI component to create setup actions.
 
 ## Authors
 
