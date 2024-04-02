@@ -5,13 +5,13 @@ simple implementation of setup actions for zora's create Tool using
 - `@zoralabs/protocol-sdk`
 - `viem`
 
-<img width="1440" alt="Screenshot 2024-03-16 at 8 03 33 PM" src="https://github.com/SweetmanTech/viem-transfers/assets/23249402/7316614b-0951-4590-a35e-ff901518e8fd">
+<img width="1440" alt="Screenshot 2024-04-01 at 10 09 48 PM" src="https://github.com/SweetmanTech/setup-actions/assets/23249402/93ab1cb6-8f2a-47a7-a282-b6e185391da2">
 
-## Key Components
+## Components
 
 - `@/components/GenerateButton`: UI component to create setup actions.
 
-## Setup Actions
+## Libraries
 
 - `@/lib/zora/getSetupActions`: call to get array of the following setup actions.
 - `@/lib/zora/getSetupNewTokenCall`: call for `setupNewToken`.
