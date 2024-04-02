@@ -1,4 +1,4 @@
-const Input = ({ onChange, onEnterPress }: any) => {
+const Input = ({ onChange, onEnterPress, placeholder = '' }: any) => {
   const handleKeyDown = (e: any) => {
     if (e.key === 'Enter') {
       if (onEnterPress) {
@@ -10,8 +10,9 @@ const Input = ({ onChange, onEnterPress }: any) => {
   return (
     <input
       onChange={onChange}
+      placeholder={placeholder}
       onKeyDown={handleKeyDown}
-      className="border border-black focus:border-black focus:outline-black w-[30vw] px-1 py-2 focus:ring-0 rounded"
+      className="min-w-[444px] border border-black focus:border-black focus:outline-black w-[30vw] px-1 py-2 focus:ring-0 rounded"
     />
   );
 };
