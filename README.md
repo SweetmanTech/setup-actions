@@ -11,6 +11,17 @@ simple implementation of setup actions for zora's create Tool using
 
 - `@/components/GenerateButton`: UI component to create setup actions.
 
+## Setup Actions
+
+- `@/lib/zora/getSetupActions`: call to get array of the following setup actions.
+- `@/lib/zora/getSetupNewTokenCall`: call for `setupNewToken`.
+- `@/lib/zora/getUpdateTokenURICall`: call for `updateTokenURI`.
+- `@/lib/zora/getUpdateRoyaltiesForTokenCall`: call for `updateRoyaltiesForToken`.
+- `@/lib/zora/getCallSaleCall`: call for `callSale`.
+- `@/lib/zora/getSetSaleCall`: call for `setSale` to setup the sale.
+- `@/lib/zora/getMinterPermissionCall`: call for `addPermission` with minter role.
+- `@/lib/zora/getAdminMintCall`: call for `adminMint`.
+
 ## Authors
 
 - [@sweetmantech](https://github.com/sweetmantech) ([warpcast](https://warpcast.com/sweetman-eth))
