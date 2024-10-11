@@ -10,7 +10,11 @@ const SaleStrategyInput = () => {
 
   return (
     <div className="flex flex-col text-left">
-      <Input onChange={handleChange} placeholder="fixed price sale strategy" />
+      <Input
+        onChange={handleChange}
+        placeholder="fixed price sale strategy"
+        className="w-[80vw] md:w-[40vw]"
+      />
       <a
         href="https://github.com/ourzora/zora-protocol/tree/main/packages/1155-deployments/addresses"
         target="_blank"

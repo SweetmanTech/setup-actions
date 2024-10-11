@@ -8,7 +8,9 @@ const FundsRecipientInput = () => {
     setFundsRecipient(e.target.value);
   };
 
-  return <Input onChange={handleChange} placeholder="funds recipient" />;
+  return (
+    <Input onChange={handleChange} placeholder="funds recipient" className="w-[80vw] md:w-[40vw]" />
+  );
 };
 
 export default FundsRecipientInput;

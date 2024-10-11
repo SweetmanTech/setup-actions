@@ -1,20 +1,26 @@
-const Input = ({ onChange, onEnterPress, placeholder = '' }: any) => {
-  const handleKeyDown = (e: any) => {
-    if (e.key === 'Enter') {
-      if (onEnterPress) {
-        onEnterPress(e.target.value);
-      }
-    }
-  };
+import * as React from 'react';
 
-  return (
-    <input
-      onChange={onChange}
-      placeholder={placeholder}
-      onKeyDown={handleKeyDown}
-      className="min-w-[444px] border border-black focus:border-black focus:outline-black w-[30vw] px-1 py-2 focus:ring-0 rounded"
-    />
-  );
-};
+import { cn } from '@/lib/utils';
+
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  onEnterPress?: () => void;
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          className,
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Input.displayName = 'Input';
 
 export default Input;
