@@ -2,7 +2,6 @@ import getAdminMintCall from '@/lib/zora/getAdminMintCall';
 import getCallSaleCall from '@/lib/zora/getCallSaleCall';
 import getMinterPermissionCall from '@/lib/zora/getMinterPermissionCall';
 import getSetSaleCall from '@/lib/zora/getSetSaleCall';
-import getSetupActions from '@/lib/zora/getSetupActions';
 import getSetupNewTokenCall from '@/lib/zora/getSetupNewTokenCall';
 import getUpdateRoyaltiesForTokenCall from '@/lib/zora/getUpdateRoyaltiesForTokenCall';
 import getUpdateTokenURICall from '@/lib/zora/getUpdateTokenURICall';
@@ -10,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { maxUint256, zeroAddress } from 'viem';
 
 const useSetupActions = () => {
+  const [tokenId, setTokenId] = useState<bigint>(1n);
   const [selectedSetupLabels, setSelectedSetupLabels] = useState<string[]>([
     'updateTokenURICall',
     'setupNewTokenCall',
@@ -32,10 +32,9 @@ const useSetupActions = () => {
   ];
 
   const updateSetupActions = () => {
-    const tokenId = 1n;
     const maxSupply = maxUint256;
 
-    const setSaleCall = getSetSaleCall(tokenId, fundsRecipient);
+    const setSaleCall = getSetSaleCall(tokenId);
 
     const orderedSelectedCalls = callLabels
       .filter((label) => selectedSetupLabels.includes(label))
@@ -64,9 +63,11 @@ const useSetupActions = () => {
 
   useEffect(() => {
     updateSetupActions();
-  }, [fundsRecipient, saleStrategy, selectedSetupLabels]);
+  }, [tokenId, fundsRecipient, saleStrategy, selectedSetupLabels]);
 
   return {
+    tokenId,
+    setTokenId,
     selectedSetupLabels,
     setSelectedSetupLabels,
     setupActions,
