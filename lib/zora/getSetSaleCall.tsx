@@ -1,19 +1,19 @@
-import { zoraCreatorFixedPriceSaleStrategyABI } from '@zoralabs/protocol-deployments';
+import { zoraTimedSaleStrategyABI } from '@zoralabs/protocol-deployments';
 
 import { encodeFunctionData, maxUint64 } from 'viem';
 
-const getSetSaleCall = (tokenId: bigint, fundsRecipient: `0x${string}`) =>
+const getSetSaleCall = (tokenId: bigint) =>
   encodeFunctionData({
-    abi: zoraCreatorFixedPriceSaleStrategyABI,
-    functionName: `setSale`,
+    abi: zoraTimedSaleStrategyABI,
+    functionName: `setSaleV2`,
     args: [
       tokenId,
       {
         saleStart: 0n,
-        saleEnd: maxUint64,
-        maxTokensPerAddress: 0n,
-        pricePerToken: 0n,
-        fundsRecipient,
+        marketCountdown: 0n,
+        minimumMarketEth: 111000000000000n * 1n,
+        name: 'COOP',
+        symbol: 'COOP',
       },
     ],
   });

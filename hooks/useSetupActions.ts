@@ -34,7 +34,7 @@ const useSetupActions = () => {
   const updateSetupActions = () => {
     const maxSupply = maxUint256;
 
-    const setSaleCall = getSetSaleCall(tokenId, fundsRecipient);
+    const setSaleCall = getSetSaleCall(tokenId);
 
     const orderedSelectedCalls = callLabels
       .filter((label) => selectedSetupLabels.includes(label))
