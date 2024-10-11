@@ -9,16 +9,14 @@ import { decodeFunctionData } from 'viem';
 import { zoraCreator1155ImplABI } from '@zoralabs/protocol-deployments';
 
 const LandingPageContent = () => {
-  const { setupActions, setSetupActions } = useProvider();
+  const { selectedSetupLabels, setSelectedSetupLabels } = useProvider();
 
-  const handleCheckboxChange = (action: string) => {
-    setSetupActions((prevActions) => {
-      if (prevActions.includes(action)) {
-        // Remove the action if it's already selected
-        return prevActions.filter((a) => a !== action);
+  const handleCheckboxChange = (label: string) => {
+    setSelectedSetupLabels((prevLabels) => {
+      if (prevLabels.includes(label)) {
+        return prevLabels.filter((l) => l !== label);
       } else {
-        // Add the action if it's not selected
-        return [...prevActions, action];
+        return [...prevLabels, label];
       }
     });
   };
@@ -32,7 +30,7 @@ const LandingPageContent = () => {
     'adminMintCall',
   ];
 
-  console.log(setupActions);
+  console.log(selectedSetupLabels);
 
   return (
     <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center sm:gap-8 md:px-6">
@@ -40,22 +38,22 @@ const LandingPageContent = () => {
       <FundsRecipientInput />
       <SaleStrategyInput />
 
-      {setupActions.length > 0 && (
+      {callLabels.length > 0 && (
         <div className="w-full max-w-md mt-4">
           <h2 className="text-xl font-semibold mb-2">Setup Actions</h2>
           <div className="flex flex-col space-y-2">
-            {setupActions.map((action, index) => (
-              <div key={index} className="flex items-center">
+            {callLabels.map((action) => (
+              <div key={action} className="flex items-center">
                 <input
                   type="checkbox"
-                  id={`setup-action-${index}`}
+                  id={`setup-action-${action}`}
                   name={action}
-                  checked={true}
+                  checked={selectedSetupLabels.includes(action)}
                   onChange={() => handleCheckboxChange(action)}
                   className="mr-2 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <label htmlFor={`setup-action-${index}`} className="text-gray-700">
-                  {callLabels[index]}
+                <label htmlFor={`setup-action-${action}`} className="text-gray-700">
+                  {action}
                 </label>
               </div>
             ))}
@@ -64,7 +62,6 @@ const LandingPageContent = () => {
       )}
 
       <Output />
-      <GenerateButton />
       <MadeBySweets />
     </div>
   );
