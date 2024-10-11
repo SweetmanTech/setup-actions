@@ -25,24 +25,45 @@ const Provider = ({ children }: any) => {
   const [fundsRecipient, setFundsRecipient] = useState<`0x${string}`>(zeroAddress);
   const [saleStrategy, setSaleStrategy] = useState<`0x${string}`>(zeroAddress);
 
+  // Define the master list of call labels in the desired order
+  const callLabels = [
+    'updateTokenURICall',
+    'setupNewTokenCall',
+    'updateRoyaltiesForTokenCall',
+    'minterPermissionCall',
+    'callSaleCall',
+    'adminMintCall',
+  ];
+
   const updateSetupActions = () => {
     const tokenId = 1n;
     const maxSupply = maxUint256;
 
     const setSaleCall = getSetSaleCall(tokenId, fundsRecipient);
 
-    const actionMap: { [key: string]: string } = {
-      updateTokenURICall: getUpdateTokenURICall(tokenId, ''),
-      setupNewTokenCall: getSetupNewTokenCall('', maxSupply),
-      updateRoyaltiesForTokenCall: getUpdateRoyaltiesForTokenCall(tokenId, fundsRecipient),
-      minterPermissionCall: getMinterPermissionCall(tokenId, saleStrategy),
-      callSaleCall: getCallSaleCall(tokenId, saleStrategy, setSaleCall),
-      adminMintCall: getAdminMintCall(tokenId, fundsRecipient),
-    };
+    const orderedSelectedCalls = callLabels
+      .filter((label) => selectedSetupLabels.includes(label))
+      .map((label) => {
+        switch (label) {
+          case 'updateTokenURICall':
+            return getUpdateTokenURICall(tokenId, '');
+          case 'setupNewTokenCall':
+            return getSetupNewTokenCall('', maxSupply);
+          case 'updateRoyaltiesForTokenCall':
+            return getUpdateRoyaltiesForTokenCall(tokenId, fundsRecipient);
+          case 'minterPermissionCall':
+            return getMinterPermissionCall(tokenId, saleStrategy);
+          case 'callSaleCall':
+            return getCallSaleCall(tokenId, saleStrategy, setSaleCall);
+          case 'adminMintCall':
+            return getAdminMintCall(tokenId, fundsRecipient);
+          default:
+            return null;
+        }
+      })
+      .filter(Boolean);
 
-    const selectedCalls = selectedSetupLabels.map((label) => actionMap[label]).filter(Boolean);
-
-    setSetupActions(selectedCalls);
+    setSetupActions(orderedSelectedCalls as string[]);
   };
 
   useEffect(() => {
