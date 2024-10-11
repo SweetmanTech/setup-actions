@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { maxUint256, zeroAddress } from 'viem';
 
 const useSetupActions = () => {
+  const [tokenId, setTokenId] = useState<bigint>(1n);
   const [selectedSetupLabels, setSelectedSetupLabels] = useState<string[]>([
     'updateTokenURICall',
     'setupNewTokenCall',
@@ -31,7 +32,6 @@ const useSetupActions = () => {
   ];
 
   const updateSetupActions = () => {
-    const tokenId = 1n;
     const maxSupply = maxUint256;
 
     const setSaleCall = getSetSaleCall(tokenId, fundsRecipient);
@@ -63,9 +63,11 @@ const useSetupActions = () => {
 
   useEffect(() => {
     updateSetupActions();
-  }, [fundsRecipient, saleStrategy, selectedSetupLabels]);
+  }, [tokenId, fundsRecipient, saleStrategy, selectedSetupLabels]);
 
   return {
+    tokenId,
+    setTokenId,
     selectedSetupLabels,
     setSelectedSetupLabels,
     setupActions,
