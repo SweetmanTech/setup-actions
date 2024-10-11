@@ -13,7 +13,6 @@ const LandingPageContent = () => {
       <SaleStrategyInput />
       <Checkboxes />
       <Output />
-      {/* Note added above GenerateButton */}
       <p className="mt-4 text-sm text-gray-600 w-[80vw] md:w-[40vw]">
         The generated output can be used in the setupActions field when creating a new ERC155
         collection or as the single param in the multicall method on an existing 1155 collection.
