@@ -5,7 +5,7 @@ const Checkboxes = () => {
   const { selectedSetupLabels, setSelectedSetupLabels } = useProvider();
 
   const handleCheckboxChange = (label: string) => {
-    setSelectedSetupLabels((prevLabels) => {
+    setSelectedSetupLabels((prevLabels: string[]) => {
       if (prevLabels.includes(label)) {
         return prevLabels.filter((l) => l !== label);
       } else {
