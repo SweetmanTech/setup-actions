@@ -11,4 +11,5 @@
 9. manage the state of the setup actions in a hook.
 10. each call in the setup actions array should preserve its index in the array. If I toggle one off and then back on, the call should remain in the same index.
 11. input widths should be responsive and adjust to the screen size. currently the input width is too wide on mobile and exceeds the screen width.
-12. add a note above the <GenerateButton> with a quick instruction on how the generated output can be used in creating a new contract or in the multicall method on an existing 1155 collection.
+12. add a note beneath the <Output> with a quick instruction on how the generated output can be used in creating a new contract or in the multicall method on an existing 1155 collection.
+13. <TokenInput /> - new component tomake the tokenId dynamic instead of hard-coded to 1n.
