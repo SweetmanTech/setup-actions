@@ -2,7 +2,6 @@ import getAdminMintCall from '@/lib/zora/getAdminMintCall';
 import getCallSaleCall from '@/lib/zora/getCallSaleCall';
 import getMinterPermissionCall from '@/lib/zora/getMinterPermissionCall';
 import getSetSaleCall from '@/lib/zora/getSetSaleCall';
-import getSetupActions from '@/lib/zora/getSetupActions';
 import getSetupNewTokenCall from '@/lib/zora/getSetupNewTokenCall';
 import getUpdateRoyaltiesForTokenCall from '@/lib/zora/getUpdateRoyaltiesForTokenCall';
 import getUpdateTokenURICall from '@/lib/zora/getUpdateTokenURICall';
