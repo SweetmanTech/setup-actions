@@ -5,6 +5,8 @@ import Output from '../Output';
 import LandingPageHeader from './LandingPageHeader';
 import SaleStrategyInput from './SaleStrategyInput';
 import FundsRecipientInput from './FundsRecipientInput';
+import { decodeFunctionData } from 'viem';
+import { zoraCreator1155ImplABI } from '@zoralabs/protocol-deployments';
 
 const LandingPageContent = () => {
   const { setupActions, setSetupActions } = useProvider();
@@ -20,6 +22,15 @@ const LandingPageContent = () => {
       }
     });
   };
+
+  const callLabels = [
+    'updateTokenURICall',
+    'setupNewTokenCall',
+    'updateRoyaltiesForTokenCall',
+    'minterPermissionCall',
+    'callSaleCall',
+    'adminMintCall',
+  ];
 
   console.log(setupActions);
 
@@ -44,7 +55,7 @@ const LandingPageContent = () => {
                   className="mr-2 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
                 <label htmlFor={`setup-action-${index}`} className="text-gray-700">
-                  {action}
+                  {callLabels[index]}
                 </label>
               </div>
             ))}
