@@ -6,7 +6,7 @@ const Output = () => {
   const text = setupActions.length > 0 && JSON.stringify(setupActions);
 
   return (
-    <div className="w-[444px] rounded-lg border border-black-200 p-1.5 flex items-center">
+    <div className="w-[80vw] md:w-[40vw] rounded-lg border border-black-200 p-1.5 flex items-center">
       {text && (
         <textarea
           value={text}
